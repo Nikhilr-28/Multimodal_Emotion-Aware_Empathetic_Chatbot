@@ -1,0 +1,26 @@
+# ── Vision Model ──────────────────────────────────────────────
+torch>=2.0.0
+torchvision>=0.15.0
+timm>=0.9.0
+Pillow>=9.0.0
+tqdm>=4.0.0
+opencv-python>=4.7.0
+mediapipe>=0.10.0
+
+# ── Dialogue Model (Mistral-7B + QLoRA) ───────────────────────
+transformers>=4.38.0
+peft>=0.9.0
+bitsandbytes>=0.41.0
+accelerate>=0.27.0
+datasets>=2.18.0
+sentencepiece>=0.1.99
+protobuf>=3.20.0
+
+# ── RAG / Vector Store ────────────────────────────────────────
+faiss-cpu>=1.7.4
+sentence-transformers>=2.5.0
+numpy>=1.24.0
+
+# ── Utilities ─────────────────────────────────────────────────
+python-dotenv>=1.0.0
+huggingface_hub>=0.21.0
