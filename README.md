@@ -1,9 +1,5 @@
 # Emotion Aware Empathetic Chatbot
 
-<p align="center">
-  <img src="assets/project_pipeline.png" alt="System Pipeline" width="92%">
-</p>
-
 <h3 align="center">A multimodal conversational AI that reads your face, understands your words, and responds the way a good listener would.</h3>
 
 <p align="center">
@@ -77,6 +73,16 @@ At inference, the dialogue model receives the detected emotion label, the user's
 
 ---
 
+## System Architecture
+
+<p align="center">
+  <img src="assets/Project_Pipeline.png" alt="Emotion Aware Empathetic Chatbot — System Pipeline" width="92%">
+</p>
+
+The pipeline begins with dual-modality emotion detection from a face image and the user's text message. The two resulting probability distributions are fused via weighted calibration and resolved to a single emotion label, which conditions the GPT-OSS dialogue model alongside RAG-retrieved in-context examples and the active Clara Hill stage prompt.
+
+---
+
 ## Demo
 
 The following screenshots show a complete eight-turn conversation with the inference pipeline. The user provides a face image on the first turn. ConvNeXt-Base detects sadness with confidence 0.70, which after fusion with the text emotion establishes the opening session state. The system progresses through all three Clara Hill stages as the conversation unfolds.
@@ -113,7 +119,59 @@ The following screenshots show a complete eight-turn conversation with the infer
 
 ---
 
-## Results
+## Try It Yourself
+
+Sample face images for all four emotion classes are included in `assets/`. Use them as the image input on the first turn of a conversation to see multimodal fusion in action. Suggested opening messages are provided for each to help ground the session emotion and get a meaningful response immediately.
+
+---
+
+<p align="center">
+  <img src="assets/sad.png" alt="Sad" width="18%">
+</p>
+
+**Sadness** · `assets/sad.png`
+
+> *"I've been feeling really distant from everyone lately. Like I'm in the room but not really there."*
+
+The system will detect sadness visually and reinforce it with the text signal. Expect the Exploration stage to reflect isolation and validate the feeling before gently asking what's been on your mind.
+
+---
+
+<p align="center">
+  <img src="assets/angry.jpg" alt="Angry" width="18%">
+</p>
+
+**Anger** · `assets/angry.jpg`
+
+> *"I keep putting in the effort and nothing ever changes. It's exhausting and I'm just done."*
+
+Visual anger fused with high-frustration text pushes the session into anger confidently. The system will acknowledge the exhaustion without dismissing it, and hold back from offering solutions in the early turns.
+
+---
+
+<p align="center">
+  <img src="assets/fear.png" alt="Fear" width="18%">
+</p>
+
+**Fear** · `assets/fear.png`
+
+> *"I have a big decision coming up and I genuinely don't know what the right call is. Everything feels uncertain."*
+
+Fear paired with uncertainty language produces a session focused on grounding. The Exploration stage will acknowledge the anxiety around the unknown and invite you to talk through what's making it feel so heavy.
+
+---
+
+<p align="center">
+  <img src="assets/happy.jpg" alt="Happy" width="18%">
+</p>
+
+**Happiness** · `assets/happy.jpg`
+
+> *"Something I've been working toward for a long time finally came together today."*
+
+A happiness detection on the first turn shifts the tone entirely. The system picks up on the positive affect and moves into supportive, celebratory reflection — asking what made it meaningful rather than what went wrong.
+
+---
 
 ### Vision Model
 
@@ -179,7 +237,7 @@ All datasets are mapped to a unified four-class label schema — **happy, sad, f
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/emotion-aware-empathetic-chatbot.git
+git clone https://github.com/Nikhilr-28/Multimodal_Emotion-Aware_Empathetic_Chatbot.git
 cd emotion-aware-empathetic-chatbot
 pip install -r requirements.txt
 ```
